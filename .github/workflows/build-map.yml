@@ -1,0 +1,35 @@
+name: Build Map on Push
+
+on:
+  push:
+    paths:
+      - 'properties.json'
+      - 'generate_map.py'
+
+jobs:
+  build-map:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install folium
+
+    - name: Run map generator
+      run: |
+        python generate_map.py
+
+    - name: Commit and push map
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add docs/index.html
+        git commit -m "Auto-update map from properties.json" || echo "No changes"
+        git push
