@@ -7,7 +7,7 @@ on:
       - 'generate_map.py'
 
 jobs:
-  build-map:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,17 +19,15 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: |
-        pip install folium
+      run: pip install folium
 
-    - name: Run map generator
-      run: |
-        python generate_map.py
+    - name: Generate map
+      run: python generate_map.py
 
     - name: Commit and push map
       run: |
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
         git add docs/index.html
-        git commit -m "Auto-update map from properties.json" || echo "No changes"
+        git commit -m "Auto: Update map" || echo "No changes"
         git push
