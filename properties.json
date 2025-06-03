@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Green Acres",
+        "address": "123 Main St, Springfield, IL",
+        "latitude": 39.7817,
+        "longitude": -89.6501,
+        "owner": "Client A",
+        "date": "2020-06-12"
+    },
+    {
+        "name": "Blue Ridge",
+        "address": "456 Oak Ave, Raleigh, NC",
+        "latitude": 35.7796,
+        "longitude": -78.6382,
+        "owner": "Client B",
+        "date": "2021-03-22"
+    }
+]
